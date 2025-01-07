@@ -1,32 +1,13 @@
-﻿using System;
+﻿using System.Runtime.InteropServices;
 using System.Diagnostics;
-using System.IO;
-using System.Runtime.InteropServices;
 using System.Text;
+using System.IO;
+using System;
 
 namespace Keygen
 {
-    internal static class CommonFunctions
+    internal static partial class CommonFunctions
     {
-        [DllImport(@"\GetKey\ArLib.dll", SetLastError = true)]
-        private static extern int DllGetComputerCode(StringBuilder stringBuilder);
-
-        [DllImport(@"\GetKey\ArLib.dll", SetLastError = true)]
-        private static extern int DllEncryptString_Des(StringBuilder enc, string dec, string str = "Ld_Tq_Se");
-
-        [DllImport(@"\GetKey\ArLib.dll", SetLastError = true)]
-        private static extern int MD5(string a1, StringBuilder a2);
-
-        //[DllImport("user32.dll", SetLastError = true)]
-        //private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-        //[DllImport("user32.dll")]
-        //private static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
-
-        //[DllImport("user32.dll", CharSet = CharSet.Auto)]
-        //private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, StringBuilder lParam);
-        public static event EventHandler GetMd5Progress;
-
         public static byte[] CreateArray(byte[] md5)
         {
             byte[] byteArry2 = new byte[52];
@@ -88,23 +69,6 @@ namespace Keygen
 
         public static string GetMd5()
         {
-            //int WM_GETTEXT = 0x000D;
-            //int WM_GETTEXTLENGTH = 0x000E;
-            //string md5 = "";
-            //Process process = new Process();
-            //process.StartInfo.FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "\\GetKey", "GetKey.exe");
-            //process.Start();
-            //process.WaitForInputIdle();
-            //IntPtr hWnd = FindWindow("#32770", null);
-            //if (hWnd == IntPtr.Zero) return md5;
-            //IntPtr textBoxHandle = FindWindowEx(hWnd, IntPtr.Zero, "Edit", null);
-            //if (textBoxHandle == IntPtr.Zero) return md5;
-            //StringBuilder sb = new StringBuilder(SendMessage(textBoxHandle, WM_GETTEXTLENGTH, 0, null) + 1);
-            //SendMessage(textBoxHandle, WM_GETTEXT, sb.Capacity, sb);
-            //md5 = sb.ToString();
-            //process.Kill();
-            //return md5;
-
             Process process = new Process();
             process.StartInfo.FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "\\GetKey", "GetMd5.exe");
             process.StartInfo.CreateNoWindow = true;
@@ -151,13 +115,13 @@ namespace Keygen
 
             Array.Copy(Encoding.ASCII.GetBytes(md5), 0, head, 15, md5.Length);
             Array.Copy(Encoding.ASCII.GetBytes(computerCode), 0, body, 1, computerCode.Length);
-            Array.Copy(user, 0, body, 0x56, user.Length);
+            Array.Copy(user, 0, body, 0x056, user.Length);
             Array.Copy(user, 0, body, 0x50b, user.Length);
             Array.Copy(user, 0, body, 0x9bd, user.Length);
             Array.Copy(user, 0, body, 0xe6f, user.Length);
 
-            Array.Copy(date, 2, body, 0x40, date.Length - 2);
-            Array.Copy(date, 0, body, 0x6a, date.Length);
+            Array.Copy(date, 2, body, 0x040, date.Length - 2);
+            Array.Copy(date, 0, body, 0x06a, date.Length);
             Array.Copy(date, 0, body, 0x9d1, date.Length);
             Array.Copy(date, 0, body, 0x4f3, date.Length);
             Array.Copy(date, 0, body, 0x9a5, date.Length);
@@ -165,12 +129,43 @@ namespace Keygen
             Array.Copy(date, 0, body, 0xe83, date.Length);
             Array.Copy(date, 0, body, 0x51f, date.Length);
 
-            Array.Copy(temp, 0, body, 0xd2, temp.Length);
+            Array.Copy(temp, 0, body, 0x0d2, temp.Length);
             Array.Copy(temp, 0, body, 0x587, temp.Length);
             Array.Copy(temp, 0, body, 0xa39, temp.Length);
             Array.Copy(temp, 0, body, 0xeeb, temp.Length);
-            body[0x54] = 0xff;
-            body[0x55] = 0xff;
+
+            body[0x054] = 0xff; body[0x055] = 0xff;
+            body[0x5fb] = 0xff; body[0x5fc] = 0xff;
+            body[0x5ff] = 0xff; body[0x600] = 0xff;
+            body[0x603] = 0xff; body[0x604] = 0xff;
+            body[0x607] = 0xff; body[0x608] = 0xff;
+            body[0x60b] = 0xff; body[0x60c] = 0xff;
+            body[0x60f] = 0xff; body[0x610] = 0xff;
+            body[0x613] = 0xff; body[0x614] = 0xff;
+            body[0x617] = 0xff; body[0x618] = 0xff;
+            body[0x61b] = 0xff; body[0x61c] = 0xff;
+            body[0x61f] = 0xff; body[0x620] = 0xff;
+            body[0x623] = 0xff; body[0x624] = 0xff;
+            body[0x627] = 0xff; body[0x628] = 0xff;
+            body[0x62b] = 0xff; body[0x62c] = 0xff;
+            body[0x62f] = 0xff; body[0x630] = 0xff;
+            body[0x633] = 0xff; body[0x634] = 0xff;
+            body[0x637] = 0xff; body[0x638] = 0xff;
+            body[0x63b] = 0xff; body[0x63c] = 0xff;
+            body[0xaad] = 0xff; body[0xaae] = 0xff;
+            body[0xab1] = 0xff; body[0xab2] = 0xff;
+            body[0xab5] = 0xff; body[0xab6] = 0xff;
+            body[0xab9] = 0xff; body[0xaba] = 0xff;
+            body[0xabd] = 0xff; body[0xabe] = 0xff;
+            body[0xac1] = 0xff; body[0xac2] = 0xff;
+            body[0xac5] = 0xff; body[0xac6] = 0xff;
+            body[0xac9] = 0xff; body[0xaca] = 0xff;
+            body[0xf5f] = 0xff; body[0xf60] = 0xff;
+            body[0xf63] = 0xff; body[0xf64] = 0xff;
+            body[0xf67] = 0xff; body[0xf68] = 0xff;
+            body[0xf6b] = 0xff; body[0xf6c] = 0xff;
+            body[0xf6f] = 0xff; body[0xf70] = 0xff;
+            body[0xf73] = 0xff; body[0xf74] = 0xff;
         }
 
         public static string GetRegCode(string str)
@@ -183,13 +178,17 @@ namespace Keygen
         }
     }
 
-    public class Progress : EventArgs
+    internal static partial class CommonFunctions
     {
-        public int V2 { get; set; }
+        [DllImport(@"\GetKey\ArLib.dll", SetLastError = true)]
+        private static extern int DllGetComputerCode(StringBuilder stringBuilder);
 
-        public Progress(int v1)
-        {
-            V2 = v1;
-        }
+        [DllImport(@"\GetKey\ArLib.dll", SetLastError = true)]
+        private static extern int DllEncryptString_Des(StringBuilder enc, string dec, string str = "Ld_Tq_Se");
+
+        [DllImport(@"\GetKey\ArLib.dll", SetLastError = true)]
+        private static extern int MD5(string a1, StringBuilder a2);
+
+        public static event EventHandler GetMd5Progress;
     }
 }
