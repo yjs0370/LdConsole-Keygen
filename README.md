@@ -46,6 +46,9 @@
 👉 戳一戳 [绿盾使用手册](天锐绿盾数据防泄密系统管理员使用手册专业版.pdf)  
 👉 戳一戳 [安装方法](https://github.com/LaLaLaBiuBiuBiu/LdConsole-Keygen/blob/main/Installation%20Guide.md)
 
+观众老爷点个⭐️在走  
+![spy-family-anya](https://github.com/user-attachments/assets/f1fa41ca-4f5a-4d6a-bdec-fb15fdf827ce)
+
 
 [![Star History Chart](https://api.star-history.com/svg?repos=LaLaLaBiuBiuBiu/LdConsole-Keygen&type=Date)](https://star-history.com/#LaLaLaBiuBiuBiu/LdConsole-Keygen&Date)
 
