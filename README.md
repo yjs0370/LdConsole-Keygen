@@ -10,6 +10,9 @@
   <a href="https://github.com/LaLaLaBiuBiuBiu/LdConsole-Keygen/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/LaLaLaBiuBiuBiu/LdConsole-Keygen.svg" /></a>
 </p>
 <p align="center">
+ <p  align="center"><a href="https://github.com/LaLaLaBiuBiuBiu/LdConsole-Keygen/blob/main/README_En.md">English</a></p>
+
+
 
 ## 天锐绿盾是什么
 
