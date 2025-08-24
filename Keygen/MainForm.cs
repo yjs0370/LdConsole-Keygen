@@ -30,9 +30,9 @@ namespace Keygen
                     return;
                 }
 
-                Tuple<byte[], byte[]> tuple1 = DecryptHelper.GetDecryptFileByte();
-                CommonFunctions.WriteTempIrs(EncryptHelper.GetEncryptFileByte(tuple1.Item1, tuple1.Item2, textBox_computerCode.Text, "abcdefghijklmnopqrstuvwxyzabcdef", textBox_user.Text));
-                CommonFunctions.WritetrInfoPf1(EncryptHelper.GetEncryptFileByte(tuple1.Item1, tuple1.Item2, textBox_computerCode.Text, CommonFunctions.GetMd5(), textBox_user.Text), filePAth);
+                Tuple<byte[], byte[]> tuple1 = CryptoHelper.GetDecryptFileByte();
+                CryptoHelper.WriteTempIrs(CryptoHelper.GetEncryptFileByte(tuple1.Item1, tuple1.Item2, textBox_computerCode.Text, "abcdefghijklmnopqrstuvwxyzabcdef", textBox_user.Text));
+                CryptoHelper.WritetrInfoPf1(CryptoHelper.GetEncryptFileByte(tuple1.Item1, tuple1.Item2, textBox_computerCode.Text, CryptoHelper.GetMd5(), textBox_user.Text), filePAth);
             }
             catch (Exception ex)
             {
@@ -50,9 +50,9 @@ namespace Keygen
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            textBox_computerCode.Text = CommonFunctions.GetComputerCode();
+            textBox_computerCode.Text = CryptoHelper.GetComputerCode();
             textBox_filePath.Text = filePAth = AppDomain.CurrentDomain.BaseDirectory;
-            CommonFunctions.GetMd5Progress += ProgressEvent;
+            CryptoHelper.GetMd5Progress += ProgressEvent;
             this.ActiveControl = button_authorization;
         }
 
@@ -68,7 +68,7 @@ namespace Keygen
         {
             if (int.TryParse(textBox_user.Text, out _))
             {
-                textBox_regCode.Text = CommonFunctions.GetRegCode(textBox_user.Text).ToUpper();
+                textBox_regCode.Text = CryptoHelper.GetRegCode(textBox_user.Text).ToUpper();
             }
             else
             {
